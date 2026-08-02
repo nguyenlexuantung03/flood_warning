@@ -1,4 +1,4 @@
-# Hệ thống cảnh báo nguy cơ ngập lụt cục bộ tại khu vực hạ lưu sông Hương - sông Bồ
+# XÂY DỰNG HỆ THỐNG CẢNH BÁO NGUY CƠ NGẬP LỤT CỤC BỘ TẠI KHU VỰC HẠ LƯU SÔNG HƯƠNG - SÔNG BỒ, TỈNH THỪA THIÊN HUẾ DỰA TRÊN MÔ HÌNH RANDOM FOREST VÀ LOGISTIC REGRESSION TRÊN NỀN TẢNG WEB
 
 Niên luận (TIN3142) - Nguyễn Lê Xuân Tùng, MSSV 21T1020169, lớp K45G
 Trường Đại học Khoa học, Đại học Huế. GVHD: Lê Quang Chiến.
