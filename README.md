@@ -11,14 +11,14 @@ Xây dựng mô hình phân loại nhị phân (Logistic Regression, Random Fore
 .
 ├── fetch_openmeteo.py       # Bước 1: tải dữ liệu mưa thô từ Open-Meteo API
 ├── preprocess.py            # Bước 2: tiền xử lý, tính đặc trưng, gán nhãn, chia train/test
-├── flood_events.csv         # Danh mục 10 đợt ngập lụt lịch sử (2016-2025), tự tổng hợp
+├── flood_events.xlsx         # Danh mục 10 đợt ngập lụt lịch sử (2016-2025), tự tổng hợp
 ├── 03_train_evaluate.py     # Bước 3: dò siêu tham số (walk-forward CV) + huấn luyện + đánh giá
 ├── 04_plots.py               # Bước 4: vẽ các biểu đồ trong Chương 4 (hội tụ, ma trận nhầm lẫn, ROC/PR)
 ├── 05_threshold_tuning.py   # Bước 5: khảo sát ngưỡng quyết định thay thế cho 0,5
 ├── requirements.txt
 ├── data_raw/                 # (tạo tự động) dữ liệu mưa thô theo trạm
-├── (tạo tự động) train.csv
-├── (tạo tự động) test.csv
+├── (tạo tự động) train.xlsx
+├── (tạo tự động) test.xlsx
 ├── results/                  # (tạo tự động) metrics_test_results.json, test_predictions.npz
 └── figures/                   # (tạo tự động) 4 biểu đồ .png dùng trong báo cáo
 ```
@@ -50,7 +50,7 @@ matplotlib
 ```bash
 python fetch_openmeteo.py
 ```
-Gọi Open-Meteo Historical Weather API cho 2 trạm (Kim Long, Phú Ốc), giai đoạn 2016-01-01 đến 2025-12-31. Kết quả lưu vào `data_raw/kim_long_raw.csv` và `data_raw/phu_oc_raw.csv` (~3.653 dòng/trạm). Cần kết nối Internet; không cần API key.
+Gọi Open-Meteo Historical Weather API cho 2 trạm (Kim Long, Phú Ốc), giai đoạn 2016-01-01 đến 2025-12-31. Kết quả lưu vào `data_raw/kim_long_raw.xlsx` và `data_raw/phu_oc_raw.xlsx` (~3.653 dòng/trạm). Cần kết nối Internet; không cần API key.
 
 ### Bước 2.2 - Chuẩn bị danh mục sự kiện ngập lụt
 File `flood_events.xlsx` đã có sẵn trong repo (10 đợt lũ 2016-2025, tổng hợp thủ công từ Bao Tuoi Tre, VietnamPlus,...). Không cần tải lại - chỉ cần đảm bảo file này nằm cùng thư mục gốc khi chạy bước tiếp theo.
@@ -59,8 +59,8 @@ File `flood_events.xlsx` đã có sẵn trong repo (10 đợt lũ 2016-2025, t�
 ```bash
 python preprocess.py
 ```
-Đọc dữ liệu từ `data_raw/`, nội suy giá trị khuyết, tính 3 đặc trưng mưa tích lũy (3/5/7 ngày), gán nhãn theo `flood_events.csv`, chia theo mốc thời gian (train:
-2016-2023, test: 2024-2025). Kết quả: `train.csv` (5.844 dòng, 66 dương), `test.csv` (1.462 dòng, 46 dương).
+Đọc dữ liệu từ `data_raw/`, nội suy giá trị khuyết, tính 3 đặc trưng mưa tích lũy (3/5/7 ngày), gán nhãn theo `flood_events.xlsx`, chia theo mốc thời gian (train:
+2016-2023, test: 2024-2025). Kết quả: `train.xlsx` (5.844 dòng, 66 dương), `test.xlsx` (1.462 dòng, 46 dương).
 
 ## 3. Huấn luyện và đánh giá (Train + Evaluation)
 
@@ -111,6 +111,6 @@ python 05_threshold_tuning.py
 ## Ghi chú
 
 - Dữ liệu mưa lấy từ [Open-Meteo Historical Weather API](https://open-meteo.com/en/docs/historical-weather-api), miễn phí, không cần đăng ký.
-- Danh mục sự kiện ngập lụt (`flood_events.csv`) tổng hợp thủ công từ báo cáo thiên tai chính thống; nguồn cụ thể từng dòng ghi ở cột `source`.
+- Danh mục sự kiện ngập lụt (`flood_events.xlsx`) tổng hợp thủ công từ báo cáo thiên tai chính thống; nguồn cụ thể từng dòng ghi ở cột `source`.
 - Ứng dụng minh họa Web Demo (Streamlit) hiện thuộc phạm vi thiết kế (Chương 3), chưa
   triển khai trong repo này - xem hướng phát triển ở mục 5.3 của báo cáo.
