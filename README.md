@@ -19,7 +19,8 @@ liệu lượng mưa công khai từ Open-Meteo và danh mục sự kiện ngậ
 ├── 05_threshold_tuning.py   # Bước 5: khảo sát ngưỡng quyết định thay thế cho 0,5
 ├── requirements.txt
 ├── data_raw/                 # (tạo tự động) dữ liệu mưa thô theo trạm
-├── data_clean/                # (tạo tự động) train.csv, test.csv
+├── (tạo tự động) train.csv
+├── (tạo tự động) test.csv
 ├── results/                  # (tạo tự động) metrics_test_results.json, test_predictions.npz
 └── figures/                   # (tạo tự động) 4 biểu đồ .png dùng trong báo cáo
 ```
