@@ -3,9 +3,7 @@
 Niên luận (TIN3142) — Nguyễn Lê Xuân Tùng, MSSV 21T1020169, lớp K45G
 Trường Đại học Khoa học, Đại học Huế. GVHD: Lê Quang Chiến.
 
-Xây dựng mô hình phân loại nhị phân (Logistic Regression, Random Forest) dự báo nguy
-cơ ngập lụt tại khu vực hạ lưu sông Hương - sông Bồ, tỉnh Thừa Thiên Huế, dựa trên dữ
-liệu lượng mưa công khai từ Open-Meteo và danh mục sự kiện ngập lụt lịch sử.
+Xây dựng mô hình phân loại nhị phân (Logistic Regression, Random Forest) dự báo nguycơ ngập lụt tại khu vực hạ lưu sông Hương - sông Bồ, tỉnh Thừa Thiên Huế, dựa trên dữ liệu lượng mưa công khai từ Open-Meteo và danh mục sự kiện ngập lụt lịch sử.
 
 ## Cấu trúc thư mục
 
@@ -13,7 +11,7 @@ liệu lượng mưa công khai từ Open-Meteo và danh mục sự kiện ngậ
 .
 ├── fetch_openmeteo.py       # Bước 1: tải dữ liệu mưa thô từ Open-Meteo API
 ├── preprocess.py            # Bước 2: tiền xử lý, tính đặc trưng, gán nhãn, chia train/test
-├── flood_events.csv         # Danh mục 12 đợt ngập lụt lịch sử (2016-2025), tự tổng hợp
+├── flood_events.csv         # Danh mục 10 đợt ngập lụt lịch sử (2016-2025), tự tổng hợp
 ├── 03_train_evaluate.py     # Bước 3: dò siêu tham số (walk-forward CV) + huấn luyện + đánh giá
 ├── 04_plots.py               # Bước 4: vẽ các biểu đồ trong Chương 4 (hội tụ, ma trận nhầm lẫn, ROC/PR)
 ├── 05_threshold_tuning.py   # Bước 5: khảo sát ngưỡng quyết định thay thế cho 0,5
@@ -46,8 +44,7 @@ matplotlib
 
 ## 2. Chuẩn bị dữ liệu
 
-Đề tài **không sử dụng pretrained model** — toàn bộ mô hình được huấn luyện từ đầu trên
-dữ liệu mưa công khai, không có bước tải trọng số có sẵn.
+Đề tài **không sử dụng pretrained model** — toàn bộ mô hình được huấn luyện từ đầu trên dữ liệu mưa công khai, không có bước tải trọng số có sẵn.
 
 ### Bước 2.1 — Tải dữ liệu mưa thô
 ```bash
@@ -58,9 +55,8 @@ Gọi Open-Meteo Historical Weather API cho 2 trạm (Kim Long, Phú Ốc), giai
 `data_raw/phu_oc_raw.csv` (~3.653 dòng/trạm). Cần kết nối Internet; không cần API key.
 
 ### Bước 2.2 — Chuẩn bị danh mục sự kiện ngập lụt
-File `flood_events.csv` đã có sẵn trong repo (12 đợt lũ 2016-2025, tổng hợp thủ công từ
-báo cáo Ban Chỉ đạo PTDS Quốc gia, VietnamPlus, Báo Thanh Niên, Nhân Dân...). Không cần
-tải lại — chỉ cần đảm bảo file này nằm cùng thư mục gốc khi chạy bước tiếp theo.
+File `flood_events.xlsx` đã có sẵn trong repo (10 đợt lũ 2016-2025, tổng hợp thủ công từ
+báo Tuoi Tre, VietnamPlus,...). Không cần tải lại — chỉ cần đảm bảo file này nằm cùng thư mục gốc khi chạy bước tiếp theo.
 
 ### Bước 2.3 — Tiền xử lý và tạo tập train/test
 ```bash
